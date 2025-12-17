@@ -1,1 +1,1 @@
-export { default } from 'ember-data-change-tracker/transforms/object';
+export { default } from '@cityads/ember-data-change-tracker/transforms/object';

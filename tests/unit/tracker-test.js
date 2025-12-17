@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import Tracker from 'ember-data-change-tracker/tracker';
+import Tracker from '@cityads/ember-data-change-tracker/tracker';
 import FactoryGuy, { make, makeList, manualSetup } from 'ember-data-factory-guy';
-import { initializer as modelInitializer } from 'ember-data-change-tracker';
+import { initializer as modelInitializer } from '@cityads/ember-data-change-tracker';
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import sinon from 'sinon';

@@ -1,6 +1,6 @@
 {
-  "name": "ember-data-change-tracker",
-  "version": "0.10.1",
+  "name": "@cityads/ember-data-change-tracker",
+  "version": "0.11.0",
   "description": "Track changes and rollback object attributes and relationships. Ember data 2.5+",
   "keywords": [
     "ember-addon",
@@ -10,16 +10,16 @@
     "rollback"
   ],
   "license": "MIT",
-  "author": "Daniel Sudol <dansudol@yahoo.com>",
+  "author": "Alex Mayants <a.mayants@cityads.team>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/danielspaniel/ember-data-change-tracker"
+    "url": "https://github.com/AlexMayants/ember-data-change-tracker"
   },
-  "homepage": "https://github.com/danielspaniel/ember-data-change-tracker",
+  "homepage": "https://github.com/AlexMayants/ember-data-change-tracker",
   "scripts": {
     "build": "ember build",
     "start": "ember server",

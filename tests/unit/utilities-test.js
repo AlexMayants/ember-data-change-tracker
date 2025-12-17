@@ -1,4 +1,4 @@
-import {didModelChange, didModelsChange} from 'ember-data-change-tracker/utilities';
+import {didModelChange, didModelsChange} from '@cityads/ember-data-change-tracker/utilities';
 import {test, module} from 'ember-qunit';
 
 module('Unit | Utilities');

@@ -1,1 +1,1 @@
-export { default } from 'ember-data-change-tracker/mixins/keep-only-changed';
+export { default } from '@cityads/ember-data-change-tracker/mixins/keep-only-changed';

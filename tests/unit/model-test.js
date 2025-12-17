@@ -5,8 +5,8 @@ import FactoryGuy, {
   build, buildList, make, makeList, mockUpdate, mockFindRecord, mockReload,
   mockDelete, manualSetup, mockCreate, mock
 } from 'ember-data-factory-guy';
-import { initializer as modelInitializer } from 'ember-data-change-tracker';
-import Tracker, { ModelTrackerKey, RelationshipsKnownTrackerKey } from 'ember-data-change-tracker/tracker';
+import { initializer as modelInitializer } from '@cityads/ember-data-change-tracker';
+import Tracker, { ModelTrackerKey, RelationshipsKnownTrackerKey } from '@cityads/ember-data-change-tracker/tracker';
 import sinon from 'sinon';
 import EmberObject, { get, observer } from '@ember/object';
 import { settled } from '@ember/test-helpers'

@@ -1,4 +1,4 @@
-import {initializer as initialize} from 'ember-data-change-tracker';
+import {initializer as initialize} from '@cityads/ember-data-change-tracker';
 
 export default {
   name: 'ember-data-change-tracker',

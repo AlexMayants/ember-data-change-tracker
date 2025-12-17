@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-data-change-tracker'
+  name: '@cityads/ember-data-change-tracker'
 };
