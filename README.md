@@ -5,7 +5,7 @@
 **New**  
   - Experimental feature
     - isDirty, hasDirtyRelations computed properties  
-      - Set up in [configuration](https://github.com/danielspaniel/ember-data-change-tracker#configuration) as { enableIsDirty: true }    
+      - Set up in [configuration](https://github.com/AlexMayants/ember-data-change-tracker#configuration) as { enableIsDirty: true }
       - It is experimental and a has one crippling defect, it can not track object type
         attributes. But if you don't have object types it works fine.  
 
@@ -34,7 +34,7 @@ This addon aims to fill in the gaps in the change tracking / rollback that ember
        
 ## Installation
 
-* `ember install ember-data-change-tracker`
+* `ember install @cityads/ember-data-change-tracker`
 
 ## Why?
 
@@ -128,7 +128,7 @@ Usage:
 ### isDirty, hasDirtyRelations
  - Computed properties to check if the model has changed
  - Not enabled by default 
-  - Need to set enableIsDirty ( true ) on model or global [configuration](https://github.com/danielspaniel/ember-data-change-tracker#configuration)
+  - Need to set enableIsDirty ( true ) on model or global [configuration](https://github.com/AlexMayants/ember-data-change-tracker#configuration)
  - The only attributes that can NOT be tracked with isDirty are object/array
    attributes
  
@@ -245,7 +245,7 @@ Example:
 ```javascript
 // file: app/serializers/user.js
 import DS from 'ember-data';
-import keepOnlyChanged from 'ember-data-change-tracker/mixins/keep-only-changed';
+import keepOnlyChanged from '@cityads/ember-data-change-tracker/mixins/keep-only-changed';
 
 export default DS.RESTSerializer.extend(keepOnlyChanged);
 ```
@@ -295,7 +295,7 @@ For example:
 
 import {moduleForModel, test} from 'ember-qunit';
 import {make, manualSetup} from 'ember-data-factory-guy';
-import {initializer as changeInitializer} from 'ember-data-change-tracker';
+import {initializer as changeInitializer} from '@cityads/ember-data-change-tracker';
 
 moduleForModel('project', 'Unit | Model | project', {
 

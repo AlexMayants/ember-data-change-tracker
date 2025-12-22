@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
 
-const assign = Object.assign || Ember.assign || Ember.merge; 
+const assign = Object.assign || Ember.assign || Ember.merge;
 
 export default function startApp(attrs) {
   let application;
