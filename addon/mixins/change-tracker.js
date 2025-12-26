@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import Model from 'ember-data/model';
+import Mixin from '@ember/object/mixin';
 import Tracker from '../tracker';
 
-export default Model.extend({
+export default Mixin.create({
 
   init(){
     this._super(...arguments);
