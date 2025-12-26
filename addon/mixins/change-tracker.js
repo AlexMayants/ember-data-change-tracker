@@ -1,10 +1,8 @@
 import Ember from 'ember';
 import Model from 'ember-data/model';
-import Tracker from './tracker';
+import Tracker from '../tracker';
 
-const assign = Object.assign || Ember.assign || Ember.merge;
-
-Model.reopen({
+export default Model.extend({
 
   init(){
     this._super(...arguments);
@@ -42,7 +40,7 @@ Model.reopen({
    * @returns {*}
    */
   modelChanges() {
-    let changed = assign({}, this.changedAttributes());
+    let changed = { ...this.changedAttributes() };
     let trackerInfo = Tracker.metaInfo(this);
     for (let key in trackerInfo) {
       if (!changed[key] && trackerInfo.hasOwnProperty(key)) {

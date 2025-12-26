@@ -1,7 +1,8 @@
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
+import ChangeTracker from '@cityads/ember-data-change-tracker/mixins/change-tracker';
 
-export default Model.extend({
+export default Model.extend(ChangeTracker, {
   changeTracker: {trackHasMany: true, auto: true, enableIsDirty: true},
   
   name: attr('string'),

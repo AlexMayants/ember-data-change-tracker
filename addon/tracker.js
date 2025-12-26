@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import { didModelChange, didModelsChange, relationShipTransform, relationshipKnownState } from './utilities';
 
-const assign = Object.assign || Ember.assign || Ember.merge;
 export const ModelTrackerKey = '-change-tracker';
 export const RelationshipsKnownTrackerKey = '-change-tracker-relationships-known';
 const alreadyTrackedRegex = /^-mf-|string|boolean|date|^number$/,
@@ -165,7 +164,7 @@ export default class Tracker {
   static options(model) {
     let envConfig = this.envConfig(model);
     let modelConfig = this.modelConfig(model);
-    let opts = assign({}, defaultOpts, envConfig, modelConfig);
+    let opts = { ...defaultOpts, ...envConfig, ...modelConfig };
 
     let unknownOpts = Object.keys(opts).filter((v) => !knownTrackerOpts.includes(v));
     Ember.assert(`[ember-data-change-tracker] changeTracker options can have

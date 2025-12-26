@@ -10,13 +10,13 @@
         attributes. But if you don't have object types it works fine.  
 
 This addon aims to fill in the gaps in the change tracking / rollback that ember data does now.
- 
+
  - Currently ember-data 
     - tracks changes for numbers/strings/date/boolean attributes
     - has a ```changedAttributes()``` method to see what changed => [ last, current ]
     - has a ```rollbackAttributes()``` method to rollback attributes
     - has a ```hasDirtyAttributes``` computed property 
-  
+
  - This addon:
     - tracks modifications in attributes that are object/json/custom type
     - tracks replacement of belongsTo associations
@@ -31,7 +31,7 @@ This addon aims to fill in the gaps in the change tracking / rollback that ember
     - Can be used in two modes 
       - auto track mode
       - manual track mode ( the default )
-       
+
 ## Installation
 
 * `ember install @cityads/ember-data-change-tracker`
@@ -42,22 +42,36 @@ This addon aims to fill in the gaps in the change tracking / rollback that ember
 
 ```javascript
   export default Model.extend({
-       name: attr('string'),  // ember-data tracks this already
-       info: attr('object'),  // ember-data does not track modifications
-       json: attr(),          // ember-data does not track modifications if this is object
-       company: belongsTo('company', { async: false, polymorphic: true }),  // ember-data does not track replacement
-       profile: belongsTo('profile', { async: true }), // ember-data does not track replacement
-       projects: hasMany('project', { async: false }), // ember-data does not track additions/deletions
-       pets: hasMany('pet', { async: true, polymorphic: true }) // ember-data does not track additions/deletions
-   });
+    name: attr('string'),  // ember-data tracks this already
+    info: attr('object'),  // ember-data does not track modifications
+    json: attr(),          // ember-data does not track modifications if this is object
+    company: belongsTo('company', { async: false, polymorphic: true }),  // ember-data does not track replacement
+    profile: belongsTo('profile', { async: true }), // ember-data does not track replacement
+    projects: hasMany('project', { async: false }), // ember-data does not track additions/deletions
+    pets: hasMany('pet', { async: true, polymorphic: true }) // ember-data does not track additions/deletions
+  });
 ```
 
   You can not currently rollback the info, json if they are modified 
     or company, profile, projects and pets if they change.
-  
-  
+
+
+### setting up tracking
+
+  This addon exports a mixin you should add to the models you want to track:
+
+```javascript
+  import ChangeTracker from '@cityads/ember-data-change-tracker/mixins/change-tracker';
+
+  export default Model.extend(ChangeTracker, {
+    name: attr('string'),
+    ...
+    pets: hasMany('pet', { async: true, polymorphic: true })
+  });
+```
+
 ### model changes
-  
+
   - The method ```modelChanges()``` is added to model
   - Shows you any changes in an object attribute type
     - whether modified or replacing the value
@@ -73,7 +87,7 @@ This addon aims to fill in the gaps in the change tracking / rollback that ember
 Example: ( remove from a hasMany )
 ```javascript
   user.get('projects').removeObject(firstProject); // remove project1
-  user.modelChanges() //=> {projects: true }
+  user.modelChanges() //=> { projects: true }
 ```
 
 
@@ -103,9 +117,9 @@ Usage:
 
     // manual tracking model means you have to explicitly call => startTrack
     // to save the current state of things before you edit
-    user.startTrack();   
+    user.startTrack();
 
-    // edit things  
+    // edit things
     user.setProperties({
       'info.foo': 3,
       company: smallCompany,
@@ -144,15 +158,15 @@ Usage:
 
     let user = make('user', { company: bigCompany, pets });
 
-    user.startTrack();   
+    user.startTrack();
 
-    // edit things  
+    // edit things
     user.set('name', "new name");
     user.get('isDirty'); //=> true
-    
+
     user.rollback();
     user.get('isDirty'); //=> false
-    
+
     user.set('company', smallCompany);
     user.get('hasDirtyRelations'); //=> true
     user.get('isDirty'); //=> true
@@ -163,18 +177,18 @@ Usage:
     user.set('pets', [cat, cat2]);
     user.get('hasDirtyRelations'); //=> true
     user.get('isDirty'); //=> true
-    
+
     user.rollback();
     user.get('isDirty'); //=> false
 
-    // things that don't work      
-    user.set('info.foo', 3); 
+    // things that don't work
+    user.set('info.foo', 3);
     user.get('isDirty'); //=> false ( object/array attributes don't work for computed isDirty )
 
 ```
 
 ### Configuration
-  
+
   - Global configuration 
     - By default the global settings are: 
       - { **trackHasMany**: *true*, **auto**: *false*, **enableIsDirty**: *false* }
@@ -305,4 +319,4 @@ moduleForModel('project', 'Unit | Model | project', {
   }
 });
 
-```                                   
+``` 

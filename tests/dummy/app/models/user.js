@@ -2,8 +2,9 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 import {array, fragment, fragmentArray} from 'ember-data-model-fragments/attributes';
+import ChangeTracker from '@cityads/ember-data-change-tracker/mixins/change-tracker';
 
-export default Model.extend({
+export default Model.extend(ChangeTracker, {
   changeTracker: {trackHasMany: true, auto: true, enableIsDirty: true},
   name: attr('string'),
   style: attr('string'),

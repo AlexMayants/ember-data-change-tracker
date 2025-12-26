@@ -1,19 +1,19 @@
-import DS from 'ember-data';
-import Ember from 'ember';
+import Transform from 'ember-data/transform';
+import { isEmpty, typeOf } from '@ember/utils';
 
-export default DS.Transform.extend({
+export default Transform.extend({
   serialize: function(value) {
     return value && JSON.stringify(value);
   },
   
   deserialize: function(value) {
-    if (Ember.isEmpty(value)) {
+    if (isEmpty(value)) {
       return {};
     }
-    if (Ember.typeOf(value) === "object") {
+    if (typeOf(value) === 'object') {
       return value;
     }
-    if (Ember.typeOf(value) === 'string') {
+    if (typeOf(value) === 'string') {
       return JSON.parse(value);
     }
   }
