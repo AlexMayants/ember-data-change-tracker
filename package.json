@@ -1,6 +1,6 @@
 {
   "name": "@cityads/ember-data-change-tracker",
-  "version": "0.12.0-beta.1",
+  "version": "0.12.0",
   "description": "Track changes and rollback object attributes and relationships. Ember data 2.5+",
   "keywords": [
     "ember-addon",

@@ -80,7 +80,7 @@ This addon aims to fill in the gaps in the change tracking / rollback that ember
   - Shows when you replace a belongsTo association
   - Shows when you add to a hasMany association
   - Shows when you delete from a hasMany association
-  - Merges ember-data `changeAttribute()` information into one unified change object
+  - Merges ember-data `changedAttribute()` information into one unified change object
   - Unlike ember-data no last and current value is shown, just the boolean => true
     - Though you will see [last value, current value] for the attributes that ember-data tracks 
 
@@ -299,24 +299,3 @@ Usage:
  - When pushing data to the store directly to create a model ( usually done when using 
    websockets .. but same issue if using factory guy) you need to call ```model.saveTrackerChanges()``` 
    manually after creating that new model   
- - Testing 
-   - In unit / integration tests you have to manually initialize change-tracker 
-     if you are testing anything that requires the addon to be enabled
-
-For example:
- 
-```javascript
-
-import {moduleForModel, test} from 'ember-qunit';
-import {make, manualSetup} from 'ember-data-factory-guy';
-import {initializer as changeInitializer} from '@cityads/ember-data-change-tracker';
-
-moduleForModel('project', 'Unit | Model | project', {
-
-  beforeEach() {
-    manualSetup(this.container);
-    changeInitializer();
-  }
-});
-
-``` 
